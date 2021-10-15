@@ -1,51 +1,94 @@
 // write function computerPlay that randomly returns 1 of 3 values
 
-let optionsList = [" rock", " paper", " scissors"];
-
-function computerPlay(option) {
-  let turn = option[Math.floor(Math.random() * option.length)];
-
-  return turn;
-}
-
-let computerSelection = computerPlay(optionsList);
-console.log("Computer chooses: " + computerSelection);
-
-// prompt player to for input. make playerSelection input case insensitive
-// check that input is valid (rock, paper, or scissors - else, error)
-
-let playerSelection = prompt("Make your move: rock, paper, or scissors?");
-
-if (playerSelection.toLowerCase() == ("rock" || "paper" || "scissors")) {
-  console.log("Player chooses: " + playerSelection);
-} else {
-  console.log("Error");
-
-  let secondSelection = prompt(
-    "Invalid answer, try again: rock, paper, or scissors?"
-  );
-  console.log("Player chooses: " + secondSelection);
-}
-// ^fix this to continually prompt until correct input is given. while loop??
-
-// write  function singleRound that plays one round
-// takes two parameters: playerSelection and computerSelection
+let playerPoints = 0;
+let computerPoints = 0;
 
 function singleRound() {
+  let optionsList = ["rock", "paper", "scissors"];
+
+  function computerPlay(option) {
+    let turn = option[Math.floor(Math.random() * option.length)];
+
+    return turn;
+  }
+
+  // prompt player to for input. make playerSelection input case insensitive
+  // check that input is valid (rock, paper, or scissors - else, error)
+
+  function askUser() {
+    let answer = prompt("Choose rock, paper, or scissors: ").toLowerCase();
+    if (answer == "rock" || answer == "paper" || answer == "scissors") {
+      console.log("Player chooses: " + answer);
+      return answer;
+    } else {
+      return askAgain();
+    }
+    function askAgain() {
+      let answer = prompt("Incorrect, please choose again").toLowerCase();
+      if (answer == "rock" || answer == "paper" || answer == "scissors") {
+        console.log("Player chooses: " + answer);
+        return answer;
+      } else {
+        askAgain();
+      }
+    }
+  }
+
+  //
+  // let playerSelection = prompt("Make your move: rock, paper, or scissors?");
+
+  // while (playerSelection.toLowerCase() !== "rock") {
+  //   prompt("Try again");
+  // }
+
+  // if (playerSelection.toLowerCase() == ("rock" || "paper" || "scissors")) {
+  //   console.log("Player chooses: " + playerSelection);
+  // } else {
+  //   console.log("Error");
+
+  //   let secondSelection = prompt(
+  //     "Invalid choice, try again: rock, paper, or scissors?"
+  //   );
+  //   console.log("Player chooses: " + secondSelection);
+  // }
+
+  // ^fix this to continually prompt until correct input is given. while loop??
+  // maybe use initial variable 'choice', then final result of function is 'playerSelection'
+  //
+
+  // write  function singleRound that plays one round
+  // takes two parameters: playerSelection and computerSelection
+
+  let playerSelection = askUser();
+
+  let computerSelection = computerPlay(optionsList);
+  console.log("Computer chooses: " + computerSelection);
+
+  // returns a string to declare winner, format "You Lose! x beats y"
+  // function needs to know rules:  rock >  scissors,  scissors >  paper,  paper >  rock
+
   if (playerSelection == "rock" && computerSelection == "rock") {
-    console.log("Tie");
+    console.log("It's a tie!");
   } else if (playerSelection == "rock" && computerSelection == "paper") {
-    console.log("Lose");
+    console.log("Paper beats rock. You lose!");
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
-    console.log("Win");
+    console.log("Rock beats scissors. You win!");
+  } else if (playerSelection == "paper" && computerSelection == "rock") {
+    console.log("Paper beats rock. You win!");
+  } else if (playerSelection == "paper" && computerSelection == "paper") {
+    console.log("It's a tie!");
+  } else if (playerSelection == "paper" && computerSelection == "scissors") {
+    console.log("Scissors beat paper. You lose!");
+  } else if (playerSelection == "scissors" && computerSelection == "rock") {
+    console.log("Rock beats scissors. You Lose!");
+  } else if (playerSelection == "scissors" && computerSelection == "paper") {
+    console.log("Scissors beat paper. You win!");
+  } else if (playerSelection == "scissors" && computerSelection == "scissors") {
+    console.log("It's a tie!");
   }
 }
 
-singleRound(playerSelection, computerSelection);
-
-// when the function runs it returns a string to declare the winner
-// so function needs to know which option "wins"
-// rules:  rock >  scissors,  scissors >  paper,  paper >  rock
+// singleRound(playerSelection, computerSelection);
 
 // if playerSelection ==  rock &
 //   computerSelection ==  scissors -> return("Player wins!")
@@ -60,11 +103,33 @@ singleRound(playerSelection, computerSelection);
 //   computerSelection ==  paper -> return("Tie!")
 //   computerSelection ==  rock -> return("Player wins!")
 
-// format "You Lose! x beats y"
-
-// return results of this function
-
 // write function game() to run singleRound 5 times (either loop or run 5 times)
 // console.log results of each round
 // function game() keeps score and reports winner or loser at the end
-// prompt() gets input from user
+
+// function game() {
+//   singleRound();
+//   console.log("round " + 1);
+//   singleRound();
+//   console.log("round " + 2);
+//   singleRound();
+//   console.log("round " + 3);
+//   singleRound();
+//   console.log("round " + 4);
+//   singleRound();
+//   console.log("round " + 5);
+// }
+// game();
+
+let i = 0;
+
+function game() {
+  while (i < 5) {
+    singleRound();
+    i++;
+    console.log("Round " + i);
+  }
+  console.log("finished");
+}
+
+game();
