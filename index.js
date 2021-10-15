@@ -1,9 +1,8 @@
-// write function computerPlay that randomly returns 1 of 3 values
-
 let playerPoints = 0;
 let computerPoints = 0;
 
 function singleRound() {
+  // write function computerPlay that randomly returns 1 of 3 values
   let optionsList = ["rock", "paper", "scissors"];
 
   function computerPlay(option) {
@@ -71,18 +70,24 @@ function singleRound() {
     console.log("It's a tie!");
   } else if (playerSelection == "rock" && computerSelection == "paper") {
     console.log("Paper beats rock. You lose!");
+    computerPoints += 1;
   } else if (playerSelection == "rock" && computerSelection == "scissors") {
     console.log("Rock beats scissors. You win!");
+    playerPoints += 1;
   } else if (playerSelection == "paper" && computerSelection == "rock") {
     console.log("Paper beats rock. You win!");
+    playerPoints += 1;
   } else if (playerSelection == "paper" && computerSelection == "paper") {
     console.log("It's a tie!");
   } else if (playerSelection == "paper" && computerSelection == "scissors") {
     console.log("Scissors beat paper. You lose!");
+    computerPoints += 1;
   } else if (playerSelection == "scissors" && computerSelection == "rock") {
-    console.log("Rock beats scissors. You Lose!");
+    console.log("Rock beats scissors. You lose!");
+    computerPoints += 1;
   } else if (playerSelection == "scissors" && computerSelection == "paper") {
     console.log("Scissors beat paper. You win!");
+    playerPoints += 1;
   } else if (playerSelection == "scissors" && computerSelection == "scissors") {
     console.log("It's a tie!");
   }
@@ -127,9 +132,23 @@ function game() {
   while (i < 5) {
     singleRound();
     i++;
-    console.log("Round " + i);
+    console.log(
+      "ROUND " +
+        i +
+        ". " +
+        "Player: " +
+        playerPoints +
+        " Computer: " +
+        computerPoints
+    );
   }
-  console.log("finished");
+  if (playerPoints > computerPoints) {
+    console.log("Congratulations! You are the winner!");
+  } else if (computerPoints > playerPoints) {
+    console.log("You lose. Better luck next time.");
+  } else {
+    console.log("It's a tie. Play again?");
+  }
 }
 
 game();
