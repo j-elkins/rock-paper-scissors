@@ -56,7 +56,7 @@ function singleRound() {
 const numberOfTurns = 5;
 let turnIndex = 0;
 
-function game() {
+function playGame() {
   while (turnIndex < numberOfTurns) {
     singleRound();
     turnIndex++;
@@ -79,4 +79,4 @@ function game() {
   }
 }
 
-game();
+playGame();
