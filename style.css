@@ -11,3 +11,62 @@ html {
   padding: 10px 30px;
   background-color: white;
 }
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: all 1s;
+}
+
+#summary {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+#roundResults {
+  font-family: "Patrick Hand SC", cursive;
+  font-size: 20px;
+}
+
+.scorekeepers {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.score {
+  border: 1px solid black;
+  width: 120px;
+  height: 120px;
+  border-radius: 8px;
+  padding: 20px 20px 0px 20px;
+  font-size: 50px;
+  background-color: white;
+}
+
+#computerScore {
+  color: coral;
+}
+#playerScore {
+  color: rgb(255, 80, 147);
+}
+
+.winner {
+  border: 3px solid rgb(255, 80, 147);
+  border-radius: 8px;
+  background-color: white;
+  color: black;
+  font-size: 40px;
+}
+
+.loser {
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  font-size: 40px;
+}

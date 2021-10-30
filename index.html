@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock, Paper, Scissors</title>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Sigmar+One&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@100&family=Patrick+Hand+SC&display&family=Sigmar+One&display=swap");
     </style>
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" src="index.js" defer></script>
@@ -14,15 +14,28 @@
   <body>
     <div id="game">
       <h1>Let's play a game!</h1>
-      <button id="rock" class="btn">Rock</button>
-      <button id="paper" class="btn">Paper</button>
-      <button id="scissors" class="btn">Scissors</button>
+      <div id="buttonContainer">
+        <button id="rock" class="btn">Rock</button>
+        <button id="paper" class="btn">Paper</button>
+        <button id="scissors" class="btn">Scissors</button>
+      </div>
     </div>
     <div id="summary">
-      <div id="results"></div>
-      <div id="computerResults">???</div>
-      <div id="playerResults">???</div>
-      <div id="winner"></div>
+      <div id="roundResults"></div>
+      <div class="scorekeepers">
+        <div id="playerText">
+          Player
+          <div id="playerScore" class="score"></div>
+        </div>
+        <div id="compText">
+          Computer
+          <div id="computerScore" class="score"></div>
+        </div>
+      </div>
+    </div>
+    <div id="finalContainer" class="hidden">
+      <div id="winnerAnnouncement"></div>
+      <button id="again" class="btn">Play Again?</button>
     </div>
   </body>
 </html>

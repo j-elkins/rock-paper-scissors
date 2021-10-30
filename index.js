@@ -9,18 +9,7 @@ function computerPlay(options) {
   return turn;
 }
 
-// prompt player to for input. make playerSelection input case insensitive
-// check that input is valid (rock, paper, or scissors - else, error)
-// function askUser() {
-//   let answer = prompt("Choose rock, paper, or scissors: ").toLowerCase();
-//   while (optionsList.includes(answer) == false) {
-//     answer = prompt("Incorrect, please choose again").toLowerCase();
-//   }
-//   return answer;
-// }
-
-// write function playSingleRound that plays one round
-// takes two parameters: playerSelection and computerSelection
+// write function playSingleRound with parameters playerSelection and computerSelection
 function playSingleRound(buttonClicked) {
   let playerSelection = buttonClicked;
   console.log("Player chooses: " + playerSelection);
@@ -28,10 +17,8 @@ function playSingleRound(buttonClicked) {
   console.log("Computer chooses: " + computerSelection);
 
   // returns a string to declare winner, format "You Lose! x beats y"
-  // function needs to know rules:  rock >  scissors,  scissors >  paper,  paper >  rock
-
   // keep a running tally in results div
-  const resultsDiv = document.querySelector("#results");
+  const resultsDiv = document.querySelector("#roundResults");
 
   if (playerSelection == computerSelection) {
     resultsDiv.textContent = "It's a tie!";
@@ -55,19 +42,38 @@ function playSingleRound(buttonClicked) {
     playerPoints += 1;
   }
 
-  const compResults = document.querySelector("#computerResults");
-  compResults.textContent = "Computer: " + computerPoints;
+  evaluateResults();
+}
 
-  const playerResults = document.querySelector("#playerResults");
-  playerResults.textContent = "Player: " + playerPoints;
+function evaluateResults() {
+  const computerScore = document.querySelector("#computerScore");
+  computerScore.textContent = computerPoints;
 
-  const winner = document.querySelector("#winner");
+  const playerScore = document.querySelector("#playerScore");
+  playerScore.textContent = playerPoints;
+
+  if (playerPoints == 5 || computerPoints == 5) {
+    announceWinner();
+  }
+}
+
+function announceWinner() {
+  const buttonContainer = document.querySelector("#buttonContainer");
+  buttonContainer.classList.add("hidden");
+
+  const finalContainer = document.querySelector("#finalContainer");
+  finalContainer.classList.remove("hidden");
+
+  const winner = document.querySelector("#winnerAnnouncement");
+
   if (playerPoints == 5) {
     winner.textContent = "Congratulations! You win";
+    winner.classList.add("winner");
   }
 
   if (computerPoints == 5) {
     winner.textContent = "Sorry, you lose. Play again?";
+    winner.classList.add("loser");
   }
 }
 
