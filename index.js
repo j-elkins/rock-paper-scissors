@@ -16,7 +16,7 @@ function playSingleRound(buttonClicked) {
   let computerSelection = computerPlay(optionsList);
   console.log("Computer chooses: " + computerSelection);
 
-  // returns a string to declare winner, format "You Lose! x beats y"
+  // returns a string to declare winner: "You win! x beats y"
   // keep a running tally in results div
   const resultsDiv = document.querySelector("#roundResults");
 
@@ -94,32 +94,8 @@ scissors.addEventListener("click", () => {
   playSingleRound(buttonClicked);
 });
 
-// write function game() to run playSingleRound 5 times (either loop or run 5 times)
-// console.log results of each round and reports winner or loser at the end
-// const numberOfTurns = 5;
-// let turnIndex = 0;
-
-// function playGame() {
-//   while (turnIndex < numberOfTurns) {
-//     playSingleRound();
-//     turnIndex++;
-//     console.log(
-//       "ROUND " +
-//         turnIndex +
-//         ". " +
-//         "Player: " +
-//         playerPoints +
-//         " Computer: " +
-//         computerPoints
-//     );
-//   }
-//   if (playerPoints > computerPoints) {
-//     console.log("Congratulations! You are the winner!");
-//   } else if (computerPoints > playerPoints) {
-//     console.log("You lose. Better luck next time.");
-//   } else {
-//     console.log("It's a tie. Play again?");
-//   }
-// }
-
-// playGame();
+// add button to play again after game over
+const againBtn = document.querySelector("#againBtn");
+againBtn.addEventListener("click", () => {
+  document.location.reload();
+});

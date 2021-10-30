@@ -70,3 +70,8 @@ html {
   color: white;
   font-size: 40px;
 }
+
+#againBtn {
+  padding: 20px;
+  margin: 50px;
+}
