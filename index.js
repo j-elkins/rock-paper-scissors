@@ -11,15 +11,15 @@ function computerPlay(options) {
 
 // prompt player to for input. make playerSelection input case insensitive
 // check that input is valid (rock, paper, or scissors - else, error)
-function askUser() {
-  let answer = prompt("Choose rock, paper, or scissors: ").toLowerCase();
-  while (optionsList.includes(answer) == false) {
-    answer = prompt("Incorrect, please choose again").toLowerCase();
-  }
-  return answer;
-}
+// function askUser() {
+//   let answer = prompt("Choose rock, paper, or scissors: ").toLowerCase();
+//   while (optionsList.includes(answer) == false) {
+//     answer = prompt("Incorrect, please choose again").toLowerCase();
+//   }
+//   return answer;
+// }
 
-// write  function playSingleRound that plays one round
+// write function playSingleRound that plays one round
 // takes two parameters: playerSelection and computerSelection
 function playSingleRound(buttonClicked) {
   let playerSelection = buttonClicked;
@@ -30,11 +30,8 @@ function playSingleRound(buttonClicked) {
   // returns a string to declare winner, format "You Lose! x beats y"
   // function needs to know rules:  rock >  scissors,  scissors >  paper,  paper >  rock
 
-  // create a div to show results
-  // change console.logs into DOM methods
-  const game = document.querySelector("#game");
-  const resultsDiv = document.createElement("div");
-  resultsDiv.classList.add("results");
+  // keep a running tally in results div
+  const resultsDiv = document.querySelector("#results");
 
   if (playerSelection == computerSelection) {
     resultsDiv.textContent = "It's a tie!";
@@ -58,22 +55,19 @@ function playSingleRound(buttonClicked) {
     playerPoints += 1;
   }
 
-  game.appendChild(resultsDiv);
+  const compResults = document.querySelector("#computerResults");
+  compResults.textContent = "Computer: " + computerPoints;
 
-  const compResults = document.createElement("div");
-  compResults.textContent = "computer: " + computerPoints;
-  game.appendChild(compResults);
+  const playerResults = document.querySelector("#playerResults");
+  playerResults.textContent = "Player: " + playerPoints;
 
-  const playerResults = document.createElement("div");
-  playerResults.textContent = "player: " + playerPoints;
-  game.appendChild(playerResults);
-
+  const winner = document.querySelector("#winner");
   if (playerPoints == 5) {
-    return "Congratulations! You win";
+    winner.textContent = "Congratulations! You win";
   }
 
   if (computerPoints == 5) {
-    return "Sorry, you lose. Play again?";
+    winner.textContent = "Sorry, you lose. Play again?";
   }
 }
 
@@ -96,30 +90,30 @@ scissors.addEventListener("click", () => {
 
 // write function game() to run playSingleRound 5 times (either loop or run 5 times)
 // console.log results of each round and reports winner or loser at the end
-const numberOfTurns = 5;
-let turnIndex = 0;
+// const numberOfTurns = 5;
+// let turnIndex = 0;
 
-function playGame() {
-  // while (turnIndex < numberOfTurns) {
-  playSingleRound();
-  // turnIndex++;
-  // console.log(
-  //   "ROUND " +
-  //     turnIndex +
-  //     ". " +
-  //     "Player: " +
-  //     playerPoints +
-  //     " Computer: " +
-  //     computerPoints
-  // );
-  // }
-  if (playerPoints > computerPoints) {
-    console.log("Congratulations! You are the winner!");
-  } else if (computerPoints > playerPoints) {
-    console.log("You lose. Better luck next time.");
-  } else {
-    console.log("It's a tie. Play again?");
-  }
-}
+// function playGame() {
+//   while (turnIndex < numberOfTurns) {
+//     playSingleRound();
+//     turnIndex++;
+//     console.log(
+//       "ROUND " +
+//         turnIndex +
+//         ". " +
+//         "Player: " +
+//         playerPoints +
+//         " Computer: " +
+//         computerPoints
+//     );
+//   }
+//   if (playerPoints > computerPoints) {
+//     console.log("Congratulations! You are the winner!");
+//   } else if (computerPoints > playerPoints) {
+//     console.log("You lose. Better luck next time.");
+//   } else {
+//     console.log("It's a tie. Play again?");
+//   }
+// }
 
 // playGame();
