@@ -1,8 +1,8 @@
-My Rock, Paper, Scissors program - built in October 2021 as an assignment for The Odin Project.
+Rock, Paper, Scissors - built in October 2021 as an assignment for The Odin Project.
 
 The initial assignment was to write a program for Rock, Paper, Scissors that was played entirely using the console. This took me about 11 hours.
 
-This was my first time writing a whole JavaScript program entirely from scratch and it was challenging. Breaking the project down into smaller steps and writing pseudo code was extremely helpful, and it was the first time I used these problem solving tools. I learned a lot about functions, parameters, scope, and program organization.
+This was my first time writing a JavaScript program entirely from scratch and it was challenging. Breaking the project down into smaller steps and writing pseudo code was extremely helpful; this was the first time that I used these problem solving tools. I learned a lot about functions, parameters, scope, and program organization.
 
 The next part of the assignment was to create a GUI, and rewrite the code so that the game was played using interactive buttons (instead of prompts and the console). This was completed using a combination of CSS/HTML/DOM Manipulation, which took me 6 hours.
 
